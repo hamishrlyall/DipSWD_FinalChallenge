@@ -1,0 +1,65 @@
+﻿@model FinalChallenge_BasketballTeamApp.Models.Fixture
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fixture</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.teamManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.teamManager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fixtureDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fixtureDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Venue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Spent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Spent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manager.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manager.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

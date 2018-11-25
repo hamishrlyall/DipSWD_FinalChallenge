@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Manager]
+(
+	[managerID] INT IDENTITY(1,1) NOT NULL,
+	[Name] NVARCHAR(100) NOT NULL,
+	[Team] NVARCHAR(100) NOT NULL,
+	CONSTRAINT PK_managerID PRIMARY KEY (managerID)
+
+)

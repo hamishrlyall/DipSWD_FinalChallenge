@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FinalChallenge_BasketballTeamDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Fixture">
+          <Key>
+            <PropertyRef Name="fixtureID" />
+          </Key>
+          <Property Name="fixtureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="managerID" Type="int" Nullable="false" />
+          <Property Name="Team" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="teamManager" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fixtureDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Venue" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Spent" Type="money" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="managerID" />
+          </Key>
+          <Property Name="managerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Team" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_managerID">
+          <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+          <End Role="Fixture" Type="Self.Fixture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="managerID" />
+            </Principal>
+            <Dependent Role="Fixture">
+              <PropertyRef Name="managerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinalChallenge_BasketballTeamDBModelStoreContainer">
+          <EntitySet Name="Fixture" EntityType="Self.Fixture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_managerID" Association="Self.FK_managerID">
+            <End Role="Manager" EntitySet="Manager" />
+            <End Role="Fixture" EntitySet="Fixture" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinalChallenge_BasketballTeamDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Fixture">
+          <Key>
+            <PropertyRef Name="fixtureID" />
+          </Key>
+          <Property Name="fixtureID" Type="Int32" Nullable="false" />
+          <Property Name="managerID" Type="Int32" Nullable="false" />
+          <Property Name="Team" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="teamManager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fixtureDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Venue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Spent" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Manager" Relationship="Self.FK_managerID" FromRole="Fixture" ToRole="Manager" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="managerID" />
+          </Key>
+          <Property Name="managerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Team" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fixtures" Relationship="Self.FK_managerID" FromRole="Manager" ToRole="Fixture" />
+        </EntityType>
+        <Association Name="FK_managerID">
+          <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+          <End Role="Fixture" Type="Self.Fixture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="managerID" />
+            </Principal>
+            <Dependent Role="Fixture">
+              <PropertyRef Name="managerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinalChallenge_BasketballTeamDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Fixtures" EntityType="Self.Fixture" />
+          <EntitySet Name="Managers" EntityType="Self.Manager" />
+          <AssociationSet Name="FK_managerID" Association="Self.FK_managerID">
+            <End Role="Manager" EntitySet="Managers" />
+            <End Role="Fixture" EntitySet="Fixtures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinalChallenge_BasketballTeamDBModelStoreContainer" CdmEntityContainer="FinalChallenge_BasketballTeamDBEntities">
+          <EntitySetMapping Name="Fixtures">
+            <EntityTypeMapping TypeName="FinalChallenge_BasketballTeamDBModel.Fixture">
+              <MappingFragment StoreEntitySet="Fixture">
+                <ScalarProperty Name="fixtureID" ColumnName="fixtureID" />
+                <ScalarProperty Name="managerID" ColumnName="managerID" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="teamManager" ColumnName="teamManager" />
+                <ScalarProperty Name="fixtureDateTime" ColumnName="fixtureDateTime" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Spent" ColumnName="Spent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="FinalChallenge_BasketballTeamDBModel.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="managerID" ColumnName="managerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

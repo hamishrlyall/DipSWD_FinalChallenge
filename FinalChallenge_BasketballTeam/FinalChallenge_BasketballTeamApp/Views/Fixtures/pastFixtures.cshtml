@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FinalChallenge_BasketballTeamApp.Models.Fixture>
+
+@{
+    ViewBag.Title = "pastCoffee";
+}
+
+<h2>Past</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Team)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teamManager)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fixtureDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Venue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Spent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manager.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.teamManager)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fixtureDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Venue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Spent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manager.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.fixtureID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.fixtureID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.fixtureID })
+        </td>
+    </tr>
+}
+
+</table>
