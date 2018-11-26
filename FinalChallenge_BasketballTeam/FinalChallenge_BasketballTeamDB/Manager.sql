@@ -3,6 +3,7 @@
 	[managerID] INT IDENTITY(1,1) NOT NULL,
 	[Name] NVARCHAR(100) NOT NULL,
 	[Team] NVARCHAR(100) NOT NULL,
+	[TotalSpent] MONEY NULL,
 	CONSTRAINT PK_managerID PRIMARY KEY (managerID)
 
 )

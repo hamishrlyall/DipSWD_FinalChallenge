@@ -47,7 +47,7 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "managerID,Name,Team")] Manager manager)
+        public ActionResult Create([Bind(Include = "managerID,Name,Team,totalSpent")] Manager manager)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "managerID,Name,Team")] Manager manager)
+        public ActionResult Edit([Bind(Include = "managerID,Name,Team,totalSpent")] Manager manager)
         {
             if (ModelState.IsValid)
             {
