@@ -10,7 +10,6 @@ using FinalChallenge_BasketballTeamApp.Models;
 
 namespace FinalChallenge_BasketballTeamApp.Controllers
 {
-    [Authorize]
     public class ManagersController : Controller
     {
         private FinalChallenge_BasketballTeamDBEntities db = new FinalChallenge_BasketballTeamDBEntities();
@@ -47,7 +46,7 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "managerID,Name,Team,totalSpent")] Manager manager)
+        public ActionResult Create([Bind(Include = "managerID,Name,Team,TotalSpent,Approval")] Manager manager)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +78,7 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "managerID,Name,Team,totalSpent")] Manager manager)
+        public ActionResult Edit([Bind(Include = "managerID,Name,Team,TotalSpent,Approval")] Manager manager)
         {
             if (ModelState.IsValid)
             {

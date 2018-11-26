@@ -23,8 +23,9 @@
           </Key>
           <Property Name="managerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Team" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Team" Type="nvarchar" MaxLength="100" />
           <Property Name="TotalSpent" Type="money" />
+          <Property Name="Approval" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="FK_managerID">
           <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
@@ -69,9 +70,10 @@
           </Key>
           <Property Name="managerID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Team" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Team" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Fixtures" Relationship="Self.FK_managerID" FromRole="Manager" ToRole="Fixture" />
           <Property Name="TotalSpent" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Approval" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_managerID">
           <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
@@ -115,6 +117,7 @@
           <EntitySetMapping Name="Managers">
             <EntityTypeMapping TypeName="FinalChallenge_BasketballTeamDBModel.Manager">
               <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="Approval" ColumnName="Approval" />
                 <ScalarProperty Name="TotalSpent" ColumnName="TotalSpent" />
                 <ScalarProperty Name="managerID" ColumnName="managerID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

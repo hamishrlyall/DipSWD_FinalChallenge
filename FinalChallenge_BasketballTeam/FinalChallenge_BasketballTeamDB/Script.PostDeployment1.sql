@@ -15,10 +15,11 @@ BEGIN
 
 SET IDENTITY_INSERT Manager ON
 
-INSERT INTO Manager (managerID, [Name], Team) VALUES
-(99, 'Hamish', 'Hawthorn Bobcats'),
-(98, 'Jim', 'Auburn Crows'),
-(97, 'Jam', 'Glenferrie Clubbers');
+INSERT INTO Manager (managerID, [Name], Team, Approval) VALUES
+(99, 'Hamish', 'Hawthorn Bobcats', 'Approved'),
+(98, 'Jim', 'Auburn Crows', 'Approved'),
+(97, 'Jam', 'Glenferrie Clubbers', 'Approved'),
+(96, 'Jom', 'Fake Team', 'Pending');
 
 
 SET IDENTITY_INSERT Manager OFF

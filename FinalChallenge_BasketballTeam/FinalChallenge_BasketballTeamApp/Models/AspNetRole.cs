@@ -12,21 +12,18 @@ namespace FinalChallenge_BasketballTeamApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Manager
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Manager()
+        public AspNetRole()
         {
-            this.Fixtures = new HashSet<Fixture>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
-        public int managerID { get; set; }
+    
+        public string Id { get; set; }
         public string Name { get; set; }
-        public string Team { get; set; }
-        public Nullable<decimal> TotalSpent { get; set; }
-
-        public string Approval { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fixture> Fixtures { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

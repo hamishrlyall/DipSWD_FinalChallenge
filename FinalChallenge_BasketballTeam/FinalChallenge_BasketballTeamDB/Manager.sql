@@ -2,8 +2,9 @@
 (
 	[managerID] INT IDENTITY(1,1) NOT NULL,
 	[Name] NVARCHAR(100) NOT NULL,
-	[Team] NVARCHAR(100) NOT NULL,
+	[Team] NVARCHAR(100) NULL,
 	[TotalSpent] MONEY NULL,
+	[Approval]	NVARCHAR(20) NOT NULL
 	CONSTRAINT PK_managerID PRIMARY KEY (managerID)
 
 )

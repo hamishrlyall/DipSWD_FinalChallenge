@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.TotalSpent)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approval)
+        </th>
         <th></th>
     </tr>
 
@@ -35,9 +38,12 @@
             @Html.DisplayFor(modelItem => item.TotalSpent)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.managerID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.managerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.managerID })
+            @Html.DisplayFor(modelItem => item.Approval)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.managerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.managerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.managerID })
         </td>
     </tr>
 }

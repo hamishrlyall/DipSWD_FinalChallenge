@@ -180,6 +180,33 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>ASPNET_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>ASPNET_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>ASPNET_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>ASPNET_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ASPNET_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ASPNET_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ASPNET_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ASPNET_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ASPNET_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ASPNET_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\BasketballTeamModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -194,6 +221,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BasketballTeamModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>ASPNET_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Fixture.cs">
       <DependentUpon>BasketballTeamModel.tt</DependentUpon>
@@ -216,6 +246,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\ASPNET_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ASPNET_Model.edmx</DependentUpon>
+      <LastGenOutput>ASPNET_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ASPNET_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ASPNET_Model.edmx</DependentUpon>
+      <LastGenOutput>ASPNET_Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\BasketballTeamModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BasketballTeamModel.edmx</DependentUpon>
@@ -255,6 +295,13 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <EntityDeploy Include="Models\ASPNET_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ASPNET_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ASPNET_Model.edmx.diagram">
+      <DependentUpon>ASPNET_Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
