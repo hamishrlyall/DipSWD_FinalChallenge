@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -18,12 +20,20 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         // GET: Fixtures
         public ActionResult Index()
         {
+            var manage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manage.FindById(User.Identity.GetUserId());
+            ViewBag.Confirmed = currentUser.EmailConfirmed;
+
             var fixtures = db.Fixtures.Include(f => f.Manager);
             return View(fixtures.ToList());
         }
         // GET: Upcoming Fixtures
         public ActionResult upcomingfixtures()
         {
+            var manage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manage.FindById(User.Identity.GetUserId());
+            ViewBag.Confirmed = currentUser.EmailConfirmed;
+
             var fixtures = db.Fixtures.Include(f => f.Manager);
             return View(fixtures.Where(F => F.fixtureDateTime > DateTime.Now).ToList());
         }
@@ -31,6 +41,10 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         //GET: Past Fixtures
         public ActionResult pastfixtures()
         {
+            var manage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manage.FindById(User.Identity.GetUserId());
+            ViewBag.Confirmed = currentUser.EmailConfirmed;
+
             var fixtures = db.Fixtures.Include(f => f.Manager);
             return View(fixtures.Where(F => F.fixtureDateTime < DateTime.Now).ToList());
         }

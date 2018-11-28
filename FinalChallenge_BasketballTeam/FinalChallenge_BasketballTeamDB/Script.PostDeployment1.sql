@@ -19,7 +19,7 @@ INSERT INTO Manager (managerID, [Name], Team, Approval) VALUES
 (99, 'Hamish', 'Hawthorn Bobcats', 'Approved'),
 (98, 'Jim', 'Auburn Crows', 'Approved'),
 (97, 'Jam', 'Glenferrie Clubbers', 'Approved'),
-(96, 'Jom', 'Fake Team', 'Pending');
+(96, 'Jom', 'Fake Team', 'Rejected');
 
 
 SET IDENTITY_INSERT Manager OFF

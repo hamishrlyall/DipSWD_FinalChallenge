@@ -6,6 +6,7 @@ namespace FinalChallenge_BasketballTeamApp.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }

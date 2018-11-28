@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -10,17 +13,41 @@ using FinalChallenge_BasketballTeamApp.Models;
 
 namespace FinalChallenge_BasketballTeamApp.Controllers
 {
+    [Authorize]
     public class ManagersController : Controller
     {
         private FinalChallenge_BasketballTeamDBEntities db = new FinalChallenge_BasketballTeamDBEntities();
+        private Entities db1 = new Entities();
+        public ViewModel model = new ViewModel();
+
 
         // GET: Managers
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Managers.ToList());
-        }
+            var manage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manage.FindById(User.Identity.GetUserId());
+            ViewBag.Confirmed = currentUser.EmailConfirmed;
 
-        // GET: Managers/Details/5
+            AspNetUser aspNetUser = new AspNetUser();
+            Fixture fixture = new Fixture();
+            Manager manager = new Manager();
+
+            model.AspNetUsers = await db1.AspNetUsers.ToListAsync();
+            model.Fixtures = await db.Fixtures.ToListAsync();
+            model.Managers = await db.Managers.ToListAsync();
+
+            return View(model);
+        }
+        //public ActionResult Index()
+        //{
+        //    var manage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+        //    var currentUser = manage.FindById(User.Identity.GetUserId());
+        //    ViewBag.Confirmed = currentUser.EmailConfirmed;
+
+        //    return View(db.Managers.ToList());
+        //}
+
+        //GET: Managers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
