@@ -21,7 +21,7 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         public ViewModel model = new ViewModel();
         private Entities db = new Entities();
 
-        // GET: AspNetUsers
+        //GET: AspNetUsers
         //public async Task<ActionResult> Index()
         //{
         //    AspNetUser aspNetUser = new AspNetUser();
@@ -29,7 +29,7 @@ namespace FinalChallenge_BasketballTeamApp.Controllers
         //    Manager manager = new Manager();
 
         //    model.AspNetUsers = await db.AspNetUsers.ToListAsync();
-        //    model.AspNetRoles = await db.AspNetRoles.ToListAsync()
+        //    model.AspNetRoles = await db.AspNetRoles.ToListAsync();
         //    model.Fixtures = await db1.Fixtures.ToListAsync();
         //    model.Managers = await db1.Managers.ToListAsync();
 
